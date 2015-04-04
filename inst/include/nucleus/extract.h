@@ -11,7 +11,7 @@ namespace nucleus {
             extractor( InputIterator begin_, OutputIterator out_, IndexIterator index_ ): 
                 data(data_), out(out_), index(index_){}
                 
-            inline operator()( tbb::blocked_range<int>& r ){
+            inline operator()( const tbb::blocked_range<int>& r ){
                 int start = r.begin(), end = r.end() ;
                 for(int i=start; i<end; i++){
                     out[i] = data[index[i] - 1] ;      
