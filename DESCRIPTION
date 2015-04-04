@@ -1,0 +1,16 @@
+Package: nucleus
+Type: Package
+Version: 0.0.0
+Title: parallel C++ algorithms
+Description: parallel C++ algorithms
+Authors@R: c(
+    person("Romain", "Francois", , "romain@r-enthusiasts.com", role = c("aut", "cre", "cph" ) )
+    )
+URL: https://github.com/romainfrancois/nucleus
+BugReports: https://github.com/romainfrancois/nucleus/issues
+Depends:
+    R (>= 3.1.3)
+Imports:
+    RcppParallel
+LinkingTo: RcppParallel (>= 0.11.3)
+License: MIT + file LICENSE
