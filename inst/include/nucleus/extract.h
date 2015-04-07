@@ -11,7 +11,7 @@ namespace nucleus {
             extractor( InputIterator begin_, OutputIterator out_, IndexIterator index_ ): 
                 data(data_), out(out_), index(index_){}
                 
-            inline operator()( const tbb::blocked_range<int>& r ){
+            inline void operator()( const tbb::blocked_range<int>& r ){
                 int start = r.begin(), end = r.end() ;
                 for(int i=start; i<end; i++){
                     out[i] = data[index[i] - 1] ;      
@@ -37,7 +37,7 @@ namespace nucleus {
     
     #if defined(HAS_RCPP_IMPL)
     template <typename Vector>
-    inline Vector extract( const Vector& data, IntegerVector index ){
+    inline Vector extract( const Vector& data, Rcpp::IntegerVector index ){
         NEW_VECTOR(Vector,res,index.size()) ;
         extract( data.begin(), data.end(), res.begin(), index.begin(), index.end() ) ;
         return res ;
