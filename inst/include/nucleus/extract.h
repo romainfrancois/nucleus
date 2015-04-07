@@ -33,7 +33,16 @@ namespace nucleus {
             impl::extractor<InputIterator, OutputIterator, IndexIterator>( begin, out, index_begin )
         ) ; 
     }
-        
+      
+    
+    #if defined(HAS_RCPP_IMPL)
+    template <typename Vector>
+    inline Vector extract( const Vector& data, IntegerVector index ){
+        NEW_VECTOR(Vector,res,index.size()) ;
+        extract( data.begin(), data.end(), res.begin(), index.begin(), index.end() ) ;
+        return res ;
+    }
+    #endif
 }
 
 #endif
